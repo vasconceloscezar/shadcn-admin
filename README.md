@@ -124,10 +124,17 @@ cp apps/agents/.env.example apps/agents/.env
 
 ## 📚 Documentation
 
+### 🆕 New Here? Start With These:
+1. **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)** - 1-minute overview
+2. **[PROJECT_CONTEXT.md](./PROJECT_CONTEXT.md)** - Complete context for contributors
+3. **[STATUS.md](./STATUS.md)** - Detailed progress & next steps
+
+### Additional Documentation
 - [UI App](./apps/ui/README.md)
 - [Agents API](./apps/agents/README.md)
 - [Types Package](./packages/types/README.md)
-- [Original shadcn-admin README](./README.original.md)
+- [Migration Summary](./MIGRATION_SUMMARY.md)
+- [Cleanup Summary](./CLEANUP_SUMMARY.md)
 
 ## 🤝 Contributing
 
