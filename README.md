@@ -1,119 +1,145 @@
-# Shadcn Admin Dashboard
+# Enterprise Template
 
-Admin Dashboard UI crafted with Shadcn and Vite. Built with responsiveness and accessibility in mind.
+A production-ready monorepo template with React UI, Python AGNO agents, and PostgreSQL.
 
-![alt text](public/images/shadcn-admin.png)
+> Based on [shadcn-admin](https://github.com/satnaing/shadcn-admin) by [@satnaing](https://github.com/satnaing)
 
-[![Sponsored by Clerk](https://img.shields.io/badge/Sponsored%20by-Clerk-5b6ee1?logo=clerk)](https://go.clerk.com/GttUAaK)
+## 🏗️ Structure
 
-I've been creating dashboard UIs at work and for my personal projects. I always wanted to make a reusable collection of dashboard UI for future projects; and here it is now. While I've created a few custom components, some of the code is directly adapted from ShadcnUI examples.
-
-> This is not a starter project (template) though. I'll probably make one in the future.
-
-## Features
-
-- Light/dark mode
-- Responsive
-- Accessible
-- With built-in Sidebar component
-- Global search command
-- 10+ pages
-- Extra custom components
-- RTL support
-
-<details>
-<summary>Customized Components (click to expand)</summary>
-
-This project uses Shadcn UI components, but some have been slightly modified for better RTL (Right-to-Left) support and other improvements. These customized components differ from the original Shadcn UI versions.
-
-If you want to update components using the Shadcn CLI (e.g., `npx shadcn@latest add <component>`), it's generally safe for non-customized components. For the listed customized ones, you may need to manually merge changes to preserve the project's modifications and avoid overwriting RTL support or other updates.
-
-> If you don't require RTL support, you can safely update the 'RTL Updated Components' via the Shadcn CLI, as these changes are primarily for RTL compatibility. The 'Modified Components' may have other customizations to consider.
-
-### Modified Components
-
-- scroll-area
-- sonner
-- separator
-
-### RTL Updated Components
-
-- alert-dialog
-- calendar
-- command
-- dialog
-- dropdown-menu
-- select
-- table
-- sheet
-- sidebar
-- switch
-
-**Notes:**
-
-- **Modified Components**: These have general updates, potentially including RTL adjustments.
-- **RTL Updated Components**: These have specific changes for RTL language support (e.g., layout, positioning).
-- For implementation details, check the source files in `src/components/ui/`.
-- All other Shadcn UI components in the project are standard and can be safely updated via the CLI.
-
-</details>
-
-## Tech Stack
-
-**UI:** [ShadcnUI](https://ui.shadcn.com) (TailwindCSS + RadixUI)
-
-**Build Tool:** [Vite](https://vitejs.dev/)
-
-**Routing:** [TanStack Router](https://tanstack.com/router/latest)
-
-**Type Checking:** [TypeScript](https://www.typescriptlang.org/)
-
-**Linting/Formatting:** [ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)
-
-**Icons:** [Lucide Icons](https://lucide.dev/icons/), [Tabler Icons](https://tabler.io/icons) (Brand icons only)
-
-**Auth (partial):** [Clerk](https://go.clerk.com/GttUAaK)
-
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/satnaing/shadcn-admin.git
+```
+enterprise-template/
+├── apps/
+│   ├── ui/              # React + TypeScript frontend (Vite, shadcn/ui)
+│   └── agents/          # Python FastAPI + AGNO agents (coming soon)
+├── packages/
+│   └── types/           # Shared TypeScript types
+├── database/
+│   ├── migrations/      # SQL migrations
+│   └── seeds/           # Seed data
+└── docker-compose.yml   # PostgreSQL + PgAdmin
 ```
 
-Go to the project directory
+## 🚀 Quick Start
 
 ```bash
-  cd shadcn-admin
+# 1. Install dependencies
+make setup
+
+# 2. Start development
+make dev
+
+# The UI will be available at http://localhost:5173
 ```
 
-Install dependencies
+## 📦 Tech Stack
+
+### Frontend (apps/ui)
+- **React 19** + TypeScript
+- **Vite** - Build tool
+- **TanStack Router** - File-based routing
+- **TanStack Query** - Data fetching
+- **shadcn/ui** - UI components
+- **Tailwind CSS v4** - Styling
+
+### Backend (apps/agents) - Coming Soon
+- **Python 3.11+**
+- **FastAPI** - API framework
+- **AGNO** - Agentic framework
+- **SQLAlchemy** - ORM
+- **PostgreSQL** - Database
+
+### Integrations - Coming Soon
+- **CopilotKit** - AI copilot UI components
+- **AG-UI Protocol** - Frontend-agent communication
+
+## 🛠️ Development
+
+### Available Commands
 
 ```bash
-  pnpm install
+make help          # Show all commands
+make setup         # Install dependencies
+make dev           # Start UI dev server
+make dev-ui        # Start only UI
+make dev-db        # Start PostgreSQL
+make build         # Build all packages
+make lint          # Lint code
+make format        # Format code
+make clean         # Clean everything
 ```
 
-Start the server
+### Working with the UI
 
 ```bash
-  pnpm run dev
+cd apps/ui
+pnpm dev           # Start dev server
+pnpm build         # Build for production
+pnpm lint          # Lint code
 ```
 
-## Sponsoring this project ❤️
+### Database
 
-If you find this project helpful or use this in your own work, consider [sponsoring me](https://github.com/sponsors/satnaing) to support development and maintenance. You can [buy me a coffee](https://buymeacoffee.com/satnaing) as well. Don’t worry, every penny helps. Thank you! 🙏
+```bash
+make db-start      # Start PostgreSQL
+make db-stop       # Stop PostgreSQL
+make db-logs       # View logs
 
-For questions or sponsorship inquiries, feel free to reach out at [satnaingdev@gmail.com](mailto:satnaingdev@gmail.com).
+# Access PgAdmin at http://localhost:5050
+# Email: admin@example.com
+# Password: admin
+```
 
-### Current Sponsor
+## 📝 Environment Variables
 
-- [Clerk](https://go.clerk.com/GttUAaK) - authentication and user management for the modern web
+Copy `.env.example.root` to `.env` in the root directory:
 
-## Author
+```bash
+cp .env.example.root .env
+```
 
-Crafted with 🤍 by [@satnaing](https://github.com/satnaing)
+For apps:
+```bash
+cp apps/ui/.env.example apps/ui/.env
+cp apps/agents/.env.example apps/agents/.env
+```
 
-## License
+## 🎨 Features
 
-Licensed under the [MIT License](https://choosealicense.com/licenses/mit/)
+### Current Features
+- ✅ Modern React UI with shadcn/ui components
+- ✅ File-based routing with TanStack Router
+- ✅ Data fetching with TanStack Query
+- ✅ Light/Dark mode
+- ✅ Responsive design
+- ✅ TypeScript throughout
+- ✅ Monorepo with PNPM workspaces
+
+### Coming Soon
+- 🔜 Python AGNO agents
+- 🔜 FastAPI backend
+- 🔜 PostgreSQL integration
+- 🔜 CopilotKit AI copilot
+- 🔜 Real-time agent streaming
+- 🔜 Shared types between frontend/backend
+
+## 📚 Documentation
+
+- [UI App](./apps/ui/README.md)
+- [Agents API](./apps/agents/README.md)
+- [Types Package](./packages/types/README.md)
+- [Original shadcn-admin README](./README.original.md)
+
+## 🤝 Contributing
+
+This is a template repository. Fork it and customize for your needs!
+
+## 📄 License
+
+MIT License
+
+## 🙏 Credits
+
+- UI template: [shadcn-admin](https://github.com/satnaing/shadcn-admin) by [@satnaing](https://github.com/satnaing)
+- UI components: [shadcn/ui](https://ui.shadcn.com/)
+- Agentic framework: [AGNO](https://github.com/agno-agi/agno)
+- AI copilot: [CopilotKit](https://www.copilotkit.ai/)
